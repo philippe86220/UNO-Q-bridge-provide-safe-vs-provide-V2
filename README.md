@@ -23,7 +23,19 @@ To reproduce the situation described below:
 * With `provide()` → output may be corrupted:
 
 ```
-For12.37um
+
+12.37
+For12.37
+um
+12.37
+F12.37
+orum
+12.37
+12.37
+Forum
+12.37
+12.37
+Foru12.37
 ```
 
 * With `provide_safe()` → output is clean:
