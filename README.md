@@ -1,5 +1,40 @@
 # UNO-Q Router Bridge – Data Corruption Demonstration
 
+## How to reproduce the demonstration
+
+This repository demonstrates the difference between:
+
+- `Bridge.provide()` (unsafe)
+- `Bridge.provide_safe()` (thread-safe)
+
+### Step 1 — Run the unsafe version
+
+In `sketch.ino`, use:
+
+Bridge.provide("update", updateCounter);
+
+Upload and run the program.
+
+After some time you should observe messages like:
+
+> ERROR inconsistent state: counter=21 double=40  
+> ERROR inconsistent state: counter=RPC update: counter=1919 double= double=3836  
+> ERROR inconsistent state: counter=27 double=RPC update: counter=5227 double=54  
+
+This shows a race condition: `loop()` has read the variables while the RPC callback was updating them.
+
+### Step 2 — Run the safe version
+
+Now replace the line with:
+
+Bridge.provide_safe("update", updateCounter);
+
+Upload and run the program again.
+
+The inconsistent state disappears.
+
+---
+
 ## Overview
 
 This example demonstrates a **data corruption scenario** caused by concurrent access to a shared output resource (`Monitor`) on the Arduino UNO Q.
