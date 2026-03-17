@@ -11,7 +11,7 @@ This repository demonstrates the difference between:
 
 In `sketch.ino`, use:
 
-Bridge.provide("update", updateCounter);
+`Bridge.provide("print_value", printFromMpu);`
 
 Upload and run the program.
 
@@ -19,7 +19,7 @@ Upload and run the program.
 
 Now replace the line with:
 
-Bridge.provide_safe("update", updateCounter);
+`Bridge.provide_safe("print_value", printFromMpu);`
 
 Upload and run the program again.
 
