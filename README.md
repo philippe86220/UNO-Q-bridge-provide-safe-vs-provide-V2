@@ -85,13 +85,13 @@ App.run(user_loop=loop)
 void printSlow(const char *s) {
   for (int i = 0; s[i] != '\0'; i++) {
     Monitor.print(s[i]);
-    delay(1);
+    delay(10);
   }
   Monitor.println();
 }
 
 void printFromMpu(float value) {
-  Monitor.println(value);
+  Monitor.println(value, 2);
 }
 
 void setup() {
@@ -99,7 +99,7 @@ void setup() {
   Monitor.begin();
 
   Bridge.provide("print_value", printFromMpu);
-  // Bridge.provide_safe("print_value", printFromMpu);
+  //Bridge.provide_safe("print_value", printFromMpu);
 
   delay(5000);
 }
