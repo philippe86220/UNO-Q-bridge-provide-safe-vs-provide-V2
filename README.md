@@ -68,8 +68,7 @@ from arduino.app_utils import App, Bridge
 import time
 
 def loop():
-    VALUE = 12.37
-    Bridge.call("print_value", VALUE)
+    Bridge.call("print_value", 12.37)
     time.sleep(0.05)
 
 App.run(user_loop=loop)
